@@ -47,13 +47,13 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = '__all__'
-        validators = (
+        validators = [
             UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
                 fields=('user', 'following'),
                 message=('Подписка на автора уже оформлена!'),
             ),
-        )
+        ]
 
     def validate(self, data):
         if data['user'] == data['following']:
