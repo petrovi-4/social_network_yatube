@@ -36,12 +36,12 @@ class GroupSerializer(serializers.ModelSerializer):
 class FollowSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
         read_only=True,
-        queryset=User.objects.all(),
         slug_field='username',
         default=serializers.CurrentUserDefault(),
     )
     following = serializers.SlugRelatedField(
-        slug_field='username', queryset=User.objects.all()
+        slug_field='username',
+        queryset=User.objects.all()
     )
 
     class Meta:
