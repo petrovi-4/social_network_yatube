@@ -36,31 +36,31 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-	user = serializers.SlugRelatedField(
-		read_only=True,
-		slug_field='username',
-		default=serializers.CurrentUserDefault()
-	)
-	following = serializers.SlugRelatedField(
-		slug_field='username',
-		queryset=User.objects.all()
-	)
+    user = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username',
+        default=serializers.CurrentUserDefault()
+    )
+    following = serializers.SlugRelatedField(
+        slug_field='username',
+        queryset=User.objects.all()
+    )
 
-	class Meta:
-		model = Follow
-		fields = ('user', 'following')
-		validators = [
-			UniqueTogetherValidator(
-				queryset=Follow.objects.all(),
-				fields=['user', 'following'],
-				message='Такая подписка уже существует'
-			)
-		]
+    class Meta:
+        model = Follow
+        fields = ('user', 'following')
+        validators = [
+            UniqueTogetherValidator(
+                queryset=Follow.objects.all(),
+                fields=['user', 'following'],
+                message='Такая подписка уже существует'
+            )
+        ]
 
-	def validate_following(self, value):
-		user = self.context.get('request').user
-		if user == value:
-			raise serializers.ValidationError(
-				'Нельзя подписаться на самого себя'
-			)
-		return value
+    def validate_following(self, value):
+        user = self.context.get('request').user
+        if user == value:
+            raise serializers.ValidationError(
+                'Нельзя подписаться на самого себя'
+            )
+        return value
