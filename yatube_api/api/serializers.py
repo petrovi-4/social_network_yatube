@@ -47,17 +47,17 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = '__all__'
-        validators = (
+        validators = [
             UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
                 fields=('user', 'following'),
                 message=('Подписка на автора уже оформлена!'),
             ),
-        )
+        ]
 
     def validate(self, data):
-        if data['user'] == data['following']:
+        if self.context['request'].user == data['following']:
             raise serializers.ValidationError(
-                'Нельзя отписаться от самого себя!'
+                'Нельзя подписаться на самого себя!'
             )
         return data
