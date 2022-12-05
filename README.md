@@ -64,7 +64,7 @@ API для YaTube представляет собой проект социал�
     "username": "string", 
     "password": "string"
     }</pre>
-Полученный токен добавляем в headers (Postman)[(https://www.postman.com/downloads/) "Postman"] , после будут доступны все функции проекта:
+Полученный токен добавляем в headers [Postman](https://www.postman.com/downloads/), после будут доступны все функции проекта:
 <pre>Authorization: Bearer {your_token}</pre>
 Обновить JWT-токен:
 <pre>POST /api/v1/jwt/refresh/</pre>
@@ -72,7 +72,7 @@ API для YaTube представляет собой проект социал�
 <pre>GET /api/v1/posts/?limit=5&offset=0 - пагинация на 5 постов, начиная с первого</pre>
 
 
-<h5>Автор:</h5>![Мартынов Сергей](https://github.com/petrovi-4 "petrovi-4") 
+<h5>Автор:</h5> [Мартынов Сергей](https://github.com/petrovi-4) 
 
-![GitHub User's stars](https://img.shields.io/github/stars/petrovi-4?label=Stars&style=social)
-![licence](https://img.shields.io/badge/licence-GPL--3.0-green)
+![GitHub User's stars](https://img.shields.io/github/stars/petrovi-4?label=Stars&style=social)</p>
+![licence](https://img.shields.io/badge/licence-GPL--3.0-green)</p>
